@@ -10,14 +10,12 @@ router.route('/')
   .post(async (req, res) => {
     try {
       const {
-        user_name,
         user_email,
         user_password, // обычный
       } = req.body;
 
       const user = await User.findOne({
         where: {
-          user_name,
           user_email,
         },
       });
