@@ -8,7 +8,7 @@
     "dev": "nodemon app.js --ignore sessions",
     "db-seed": "npx sequelize db:seed:all",
     "db-unseed": "npx sequelize db:seed:undo:all",
-    "db-migrate": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate:all"
+    "db-migrate": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate"
   },
   "repository": {
     "type": "git",
