@@ -1,0 +1,5 @@
+user_name, user_email, user_password, id_city
+anton,anton@mail.ru,123,3
+dima,dima@mail.ru,123,2
+andrey,andrey@mail.ru,123,5
+nikita,nikita@mail.ru,123,4

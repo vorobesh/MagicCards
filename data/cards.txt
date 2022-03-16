@@ -1,0 +1,5 @@
+card_name, card_price, card_url, id_condition, id_user
+name1,100,/images/name1.png,1,2
+name2,200,/images/name2.png,2,3
+name3,300,/images/name3.png,3,4
+name4,400,/images/name4.png,1,3
