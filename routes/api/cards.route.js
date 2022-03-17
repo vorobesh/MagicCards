@@ -20,19 +20,18 @@ const upload = multer({
   storage,
 });
 
-router.post('/card/new', upload.single('card_url'), async (req, res) => {
+router.post('/new', upload.single('card_url'), async (req, res) => {
   try {
     const {
       card_name,
       card_price,
       id_condition,
       card_url,
-      id,
     } = req.body;
 
     const fileName = req.file.originalname;
 
-    // const { id } = req.session;
+    const { id } = req.session;
     if (id && card_price && id_condition && card_name && card_url) {
       await Card.create({
         card_name,
