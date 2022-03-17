@@ -2,6 +2,7 @@
 const express = require('express');
 const createError = require('http-errors');
 // const path = require('path');
+const cardRoute = require('./routes/api/card.route');
 
 const config = require('./config/config');
 
@@ -16,6 +17,7 @@ const PORT = process.env.PORT ?? 3000;
 
 config(app);
 
+app.use('/', cardRoute);
 app.use('/registration', registerRouterView);
 app.use('/registration', registerRouterApi);
 app.use('/login', loginRouterView);
