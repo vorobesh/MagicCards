@@ -1,7 +1,10 @@
 const router = require('express').Router();
+const { Card, Condition } = require('../../db/models');
 
-router.get('/', (req, res) => {
-  res.render('cards');
+router.get('/', async (req, res) => {
+  const allCards = await Card.findAll({ raw: true, include: Condition });
+  console.log(allCards);
+  res.render('cards', allCards);
 });
 
 router.get('/new', (req, res) => {
