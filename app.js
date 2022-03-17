@@ -2,6 +2,7 @@
 const express = require('express');
 const createError = require('http-errors');
 // const path = require('path');
+const cardRoute = require('./routes/api/card.route');
 
 // Импортируем созданный в отдельный файлах рутеры.
 const config = require('./config/config');
@@ -10,6 +11,8 @@ const app = express();
 const PORT = process.env.PORT ?? 3000;
 
 config(app);
+
+app.use('/', cardRoute);
 
 // Если HTTP-запрос дошёл до этой строчки, значит ни один из ранее встречаемых рутов не ответил на запрос.Это значит, что искомого раздела просто нет на сайте. Для таких ситуаций используется код ошибки 404. Создаём небольшое middleware, которое генерирует соответствующую ошибку.
 app.use((req, res, next) => {
