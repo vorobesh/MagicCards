@@ -2,7 +2,7 @@
 const router = require('express').Router();
 const { Card } = require('../../db/models');
 
-router.post('/card/new', async (req, res) => {
+router.post('/new', async (req, res) => {
   try {
     const {
       card_name, card_price, id_condition, card_url, id,
