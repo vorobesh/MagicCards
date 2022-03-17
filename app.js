@@ -21,8 +21,10 @@ const PORT = process.env.PORT ?? 3000;
 config(app);
 
 app.use((req, res, next) => {
+  console.log(req.session);
   if (req.session.user) {
     res.locals.user = req.session.user;
+    // console.log(res.locals.user);
   }
   next();
 });

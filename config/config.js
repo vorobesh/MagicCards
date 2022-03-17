@@ -20,6 +20,13 @@ function config(app) {
     },
   };
 
+  hbs.registerHelper('ifCond', function (v1, v2, options) {
+    if (v1 === v2) {
+      return options.fn(this);
+    }
+    return options.inverse(this);
+  });
+
   hbs.registerPartials(path.join(process.env.PWD, '/views/partials'));
   app.set('view engine', 'hbs');
   app.set('views', path.join(process.env.PWD, 'views'));
