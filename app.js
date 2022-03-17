@@ -39,7 +39,7 @@ app.get('/profile', (req, res) => {
   res.render('home');
 });
 
-// test
+// card create
 app.get('/card/new', (req, res) => {
   res.render('cardNew');
 });
