@@ -10,9 +10,9 @@
             <p class="card-text">Состояние: {{this.condition}}</p>
 
             {{#ifCond this.id_user user.id}}
-                <a href="#" class="btn btn-dark">Редактировать</a>
+                <a href="#" data-id="{{this.id}}" class="btn btn-dark btn-edit">Редактировать</a>
             {{else}}
-                <a href="#" class="btn btn-dark">Купить</a>
+                <a href="#" data-id="{{this.id}}" class="btn btn-dark btn-delete">Купить</a>
             {{/ifCond}}
         </div>
     </div>
@@ -20,3 +20,4 @@
         {{/each}}
 
 </div>
+<script defer src="/js/cards.js"></script>

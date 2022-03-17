@@ -1,13 +1,14 @@
-<div class="container d-flex flex-wrap py-5 justify-content-center text-white">
-
-    <h2>Имя пользователя: <span class="badge badge-secondary">{{}}</span></h2>
-    <h3>E-mail: {{}}</h3>
-    <h3>Город: {{}}</h3>
-    <h3>Дата регистрации: {{}}</h3>
-
-    <h2><span class="badge badge-secondary">Мои карточки:</span></h2>
-
-    {{#each allCards}}
+<div class="container flex-column d-flex flex-wrap py-5 justify-content-center text-white">
+<div class="d-flex flex-column">
+    <h3>Имя пользователя: <span class="badge badge-secondary">{{userInfo.user_name}}</span></h3>
+    <h3>E-mail: <span class="badge badge-secondary">{{userInfo.user_email}}</span></h3>
+    <h3>Город: <span class="badge badge-secondary">{{userInfo.city}}</span></h3>
+    <h3>Дата регистрации: <span class="badge badge-secondary">{{5}}</span></h3>
+    <br>
+    <h2 class="text-center"><span class="badge badge-secondary">Мои карточки:</span></h2><br>
+</div>
+<div class="d-flex flex-wrap py-0 justify-content-center text-white">
+    {{#each myCards}}
 
         <div class="card m-2 bg-transparent border rounded border-secondary" style="width: 18rem;">
             <img class="card-img-top" src="{{this.card_url}}" alt="{{this.card_name}}">
@@ -21,5 +22,6 @@
         </div>
 
     {{/each}}
+</div>
 
 </div>
