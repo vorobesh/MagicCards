@@ -18,7 +18,7 @@
   {{!-- <script defer src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> --}}
 </head>
-<body>
+<body style="height:100vh" class="d-flex flex-column min-vh-100">
   <header>
 
   {{> navbar}}
@@ -26,8 +26,8 @@
   </header>
 
   {{{body}}}
-  <div class="container">
-      <footer class="page-footer font-small text-white bg-dark">
+  <div class="container mt-auto">
+      <footer class="page-footer font-small text-white bg-dark p-3">
           <!-- Copyright -->
           <div class="footer-copyright text-center py-3">© 2022 Copyright: Andrey O., Anton G., Dmitry G., TEAM LEAD: Nikita M.
               <a href="https://elbrusboot.camp">&nbsp Elbrus Bootcamp</a>

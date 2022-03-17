@@ -1,0 +1,25 @@
+<div class="container d-flex flex-wrap py-5 justify-content-center text-white">
+
+    <h2>Имя пользователя: <span class="badge badge-secondary">{{}}</span></h2>
+    <h3>E-mail: {{}}</h3>
+    <h3>Город: {{}}</h3>
+    <h3>Дата регистрации: {{}}</h3>
+
+    <h2><span class="badge badge-secondary">Мои карточки:</span></h2>
+
+    {{#each allCards}}
+
+        <div class="card m-2 bg-transparent border rounded border-secondary" style="width: 18rem;">
+            <img class="card-img-top" src="{{this.card_url}}" alt="{{this.card_name}}">
+            <div class="card-body">
+                <h5 class="card-title">{{this.card_name}}</h5>
+                <p class="card-text">Цена: {{this.card_price}}</p>
+                <p class="card-text">Состояние: {{this.condition}}</p>
+                    <a href="#" class="btn btn-dark">Редактировать</a>
+                    <a href="#" class="btn btn-dark">Удалить</a>
+            </div>
+        </div>
+
+    {{/each}}
+
+</div>
