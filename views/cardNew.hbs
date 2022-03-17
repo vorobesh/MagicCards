@@ -1,19 +1,19 @@
-<div style="width: 500px; margin-top: 100px;" class="container">
+<div style="width: 500px" class="container py-3 text-white">
 
   <form enctype="multipart/form-data" id="formCardNew" method="post" action="/cards/new">
 
     <div class="form-group">
-      <label for="exampleInputEmail1">Имя вашей карточки</label>
+      <label for="exampleInputEmail1">Имя вашей карточки:</label>
       <input autocomplete="off" required name="card_name" type="text" class="form-control">
     </div>
 
     <div class="form-group">
-      <label for="exampleInputEmail1">Цена</label>
+      <label for="exampleInputEmail1">Цена:</label>
       <input autocomplete="off" required name="card_price" type="text" class="form-control">
     </div>
 
     <div class="form-group">
-      <label for="exampleInputEmail1">Ссылка для загрузки изображения</label>
+      <label for="exampleInputEmail1">Изображение для загрузки:</label>
       <input autocomplete="off" required name="card_url" type="file" class="form-control">
     </div>
 
@@ -26,7 +26,7 @@
 
     <div class="container" id="errorMessageCardNew"></div>
 
-    <button type="submit" class="btn btn-primary">Создать карточку</button>
+    <button type="submit" class="btn btn-dark mt-3">Создать карточку</button>
 
   </form>
 
