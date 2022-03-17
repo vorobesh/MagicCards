@@ -11,7 +11,6 @@ const storage = multer.diskStorage({
     cb(null, path.join(process.env.PWD, 'public/images'));
   },
   filename: (req, file, cb) => {
-    console.log(file);
     cb(null, file.originalname);
   },
 });

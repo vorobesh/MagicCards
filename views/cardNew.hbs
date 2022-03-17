@@ -1,6 +1,6 @@
 <div style="width: 500px; margin-top: 100px;" class="container">
 
-  <form enctype="multipart/form-data" method="post" action="/cards/new">
+  <form enctype="multipart/form-data" id="formCardNew" method="post" action="/cards/new">
 
     <div class="form-group">
       <label for="exampleInputEmail1">Имя вашей карточки</label>
@@ -24,9 +24,7 @@
       <option value="3">Плохое</option>
     </select>
 
-    <div id="infoCardNew">
-      {{!-- info --}}
-    </div>
+    <div class="container" id="errorMessageCardNew"></div>
 
     <button type="submit" class="btn btn-primary">Создать карточку</button>
 
