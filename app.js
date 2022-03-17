@@ -10,6 +10,28 @@ const app = express();
 const PORT = process.env.PORT ?? 3000;
 
 config(app);
+//home
+app.get('/', (req, res) => {
+  res.render('home')
+});
+
+//registration
+app.get('/reg', (req, res) => {
+  res.render('reg')
+});
+
+//login
+app.get('/login', (req, res) => {
+  res.render('home')
+});
+//logout
+app.get('/logout', (req, res) => {
+  res.render('home')
+});
+//cabinet
+app.get('/profile', (req, res) => {
+  res.render('home')
+});
 
 // Если HTTP-запрос дошёл до этой строчки, значит ни один из ранее встречаемых рутов не ответил на запрос.Это значит, что искомого раздела просто нет на сайте. Для таких ситуаций используется код ошибки 404. Создаём небольшое middleware, которое генерирует соответствующую ошибку.
 app.use((req, res, next) => {
@@ -23,7 +45,6 @@ app.use((err, req, res, next) => {
   const appMode = req.app.get('env');
   // Создаём объект, в котором будет храниться ошибка.
   let error;
-
   // Если мы находимся в режиме разработки, то отправим в ответе настоящую ошибку. В противно случае отправим пустой объект.
   if (appMode === 'development') {
     error = err;
