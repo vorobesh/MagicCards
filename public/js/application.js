@@ -3,6 +3,9 @@ const formRegistration = document.querySelector('#formRegistration');
 const errorMessageRegistration = document.querySelector('#errorMessageRegistration');
 const formLogin = document.querySelector('#formLogin');
 const errorMessageLogin = document.querySelector('#errorMessageLogin');
+const formCardNew = document.querySelector('#formCardNew');
+const errorMessageCardNew = document.querySelector('#errorMessageCardNew');
+
 if (formRegistration) {
   formRegistration.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -50,7 +53,10 @@ if (formLogin) {
 
     const responseJson = await response.json();
     if (responseJson.message === 'Вы вошли в свой аккаунт') {
-      window.location.href = '/cards';
+      errorMessageLogin.innerHTML = responseJson.message;
+      setTimeout(() => { window.location.href = '/cards'; }, 1000);
     } else { errorMessageLogin.innerHTML = responseJson.message; }
   });
 }
+
+// if (formCardNew)
