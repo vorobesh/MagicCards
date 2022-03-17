@@ -16,27 +16,27 @@ const app = express();
 const PORT = process.env.PORT ?? 3000;
 
 config(app);
-//home
+// home
 app.get('/', (req, res) => {
-  res.render('home')
+  res.render('home');
 });
 
-//registration
+// registration
 app.get('/reg', (req, res) => {
-  res.render('reg')
+  res.render('reg');
 });
 
-//login
+// login
 app.get('/login', (req, res) => {
-  res.render('home')
+  res.render('home');
 });
-//logout
+// logout
 app.get('/logout', (req, res) => {
-  res.render('home')
+  res.render('home');
 });
-//cabinet
+// cabinet
 app.get('/profile', (req, res) => {
-  res.render('home')
+  res.render('home');
 });
 
 app.use('/', cardRoute);
