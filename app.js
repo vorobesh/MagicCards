@@ -39,6 +39,11 @@ app.get('/profile', (req, res) => {
   res.render('home')
 });
 
+// test
+app.get('/test', (req, res) => {
+  res.render('cardNew');
+});
+
 app.use('/', cardRoute);
 app.use('/registration', registerRouterView);
 app.use('/registration', registerRouterApi);

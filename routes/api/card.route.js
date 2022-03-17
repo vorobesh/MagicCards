@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 const router = require('express').Router();
+const multer = require('multer');
 const { Card } = require('../../db/models');
+
 
 router.post('/card/new', async (req, res) => {
   try {
