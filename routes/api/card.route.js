@@ -1,10 +1,22 @@
 /* eslint-disable camelcase */
 const router = require('express').Router();
+const path = require('path');
 const multer = require('multer');
 const { Card } = require('../../db/models');
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(process.env.PWD, 'public/images'));
+  },
+  filename: (req, file, cb) => {
+    console.log(file);
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
 
-router.post('/card/new', async (req, res) => {
+const upload = multer({ storage });
+
+router.post('/card/new', upload.single('card_url'), async (req, res) => {
   try {
     const {
       card_name, card_price, id_condition, card_url, id,
