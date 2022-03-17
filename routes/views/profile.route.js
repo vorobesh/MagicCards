@@ -5,10 +5,11 @@ const {
 
 router.get('/', async (req, res) => {
   const { id } = req.session.user;
-  const uesrInfo = await User.findOne({ where: { id }, raw: true, include: City });
+  const userInfo = await User.findOne({ where: { id }, raw: true, include: City });
+  userInfo.city = userInfo['City.city_name'];
   const myCards = await Card.findAll({ where: { id_user: id }, raw: true, include: Condition });
-  console.log(myCards, uesrInfo);
-  res.send('work');
+  console.log(myCards, userInfo);
+  res.render('profile', { myCards, userInfo });
 });
 
 router.get('/new', (req, res) => {

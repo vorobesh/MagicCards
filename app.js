@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 const express = require('express');
 const createError = require('http-errors');
-// const path = require('path');
+const path = require('path');
 const config = require('./config/config');
 
 // Импортируем созданный в отдельный файлах роутеры.

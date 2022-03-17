@@ -1,5 +1,5 @@
 card_name, card_price, card_url, id_condition, id_user
-Антон,1200,/card/Elderfang Venom.jpeg,1,2
-Дмитрий,2200,/card/End the Festivities.jpeg,2,3
-Никита,1300,/card/Fate Forgotten.jpeg,3,4
-Андрей,3400,/card/Imperious Oligarch.jpeg,1,3
+Карточка 1,1200,/card/Elderfang Venom.jpeg,1,2
+Карточка 5,2200,/card/End the Festivities.jpeg,2,3
+Карточка 4,1300,/card/Fate Forgotten.jpeg,3,4
+Карточка 3,3400,/card/Imperious Oligarch.jpeg,1,3
