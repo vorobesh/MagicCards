@@ -49,6 +49,8 @@ if (formLogin) {
     });
 
     const responseJson = await response.json();
-    errorMessageLogin.innerHTML = responseJson.message;
+    if (responseJson.message === 'Вы вошли в свой аккаунт') {
+      window.location.href = '/cards';
+    } else { errorMessageLogin.innerHTML = responseJson.message; }
   });
 }

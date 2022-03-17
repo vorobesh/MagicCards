@@ -5,6 +5,7 @@ const createError = require('http-errors');
 const config = require('./config/config');
 
 // Импортируем созданный в отдельный файлах роутеры.
+const mainRouterView = require('./routes/views/main.route');
 const registerRouterView = require('./routes/views/register.route');
 const registerRouterApi = require('./routes/api/register.route');
 const loginRouterView = require('./routes/views/login.route');
@@ -18,10 +19,6 @@ const PORT = process.env.PORT ?? 3000;
 
 config(app);
 
-// home
-app.get('/', (req, res) => {
-  res.redirect('/cards');
-});
 app.use((req, res, next) => {
   if (req.session.user) {
     res.locals.user = req.session.user;
@@ -29,6 +26,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/', mainRouterView);
 app.use('/cards', cardsRouteView);
 app.use('/cards', cardsRouteApi);
 app.use('/registration', registerRouterView);
