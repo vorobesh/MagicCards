@@ -16,6 +16,28 @@ const app = express();
 const PORT = process.env.PORT ?? 3000;
 
 config(app);
+//home
+app.get('/', (req, res) => {
+  res.render('home')
+});
+
+//registration
+app.get('/reg', (req, res) => {
+  res.render('reg')
+});
+
+//login
+app.get('/login', (req, res) => {
+  res.render('home')
+});
+//logout
+app.get('/logout', (req, res) => {
+  res.render('home')
+});
+//cabinet
+app.get('/profile', (req, res) => {
+  res.render('home')
+});
 
 app.use((req, res, next) => {
   // console.log(req.session);
@@ -43,7 +65,6 @@ app.use((err, req, res, next) => {
   const appMode = req.app.get('env');
   // Создаём объект, в котором будет храниться ошибка.
   let error;
-
   // Если мы находимся в режиме разработки, то отправим в ответе настоящую ошибку. В противно случае отправим пустой объект.
   if (appMode === 'development') {
     error = err;
