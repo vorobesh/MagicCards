@@ -59,4 +59,28 @@ if (formLogin) {
   });
 }
 
-// if (formCardNew)
+if (formCardNew) {
+  formCardNew.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const {
+      method,
+      action,
+    } = event.target;
+
+    const data = new FormData(event.target);
+
+    const response = await fetch(action, {
+      method,
+      body: data,
+    });
+    const responseJson = await response.json();
+    if (responseJson.message === 'Карточка добавлена на сайт') {
+      errorMessageCardNew.innerHTML = responseJson.message;
+      setTimeout(() => {
+        window.location.href = '/cards';
+      }, 1000);
+    } else {
+      errorMessageCardNew.innerHTML = responseJson.message;
+    }
+  });
+}
