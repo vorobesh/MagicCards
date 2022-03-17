@@ -3,13 +3,23 @@ const express = require('express');
 const createError = require('http-errors');
 // const path = require('path');
 
-// Импортируем созданный в отдельный файлах рутеры.
 const config = require('./config/config');
+
+// Импортируем созданный в отдельный файлах роутеры.
+const registerRouterView = require('./routes/views/register.route');
+const registerRouterApi = require('./routes/api/register.route');
+const loginRouterView = require('./routes/views/login.route');
+const loginRouterApi = require('./routes/api/login.route');
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
 config(app);
+
+app.use('/registration', registerRouterView);
+app.use('/registration', registerRouterApi);
+app.use('/login', loginRouterView);
+app.use('/login', loginRouterApi);
 
 // Если HTTP-запрос дошёл до этой строчки, значит ни один из ранее встречаемых рутов не ответил на запрос.Это значит, что искомого раздела просто нет на сайте. Для таких ситуаций используется код ошибки 404. Создаём небольшое middleware, которое генерирует соответствующую ошибку.
 app.use((req, res, next) => {
