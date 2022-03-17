@@ -26,18 +26,17 @@ router.post('/new', upload.single('card_url'), async (req, res) => {
       card_name,
       card_price,
       id_condition,
-      card_url,
     } = req.body;
 
     const fileName = req.file.originalname;
 
-    const { id } = req.session;
-    if (id && card_price && id_condition && card_name && card_url) {
+    const { id } = req.session.user;
+    if (id && card_price && id_condition && card_name && fileName) {
       await Card.create({
         card_name,
-        card_price,
+        card_price: +card_price,
         id_condition,
-        card_url,
+        card_url: `/images/${fileName}`,
         id_user: id,
       });
       res.status(200).json({
