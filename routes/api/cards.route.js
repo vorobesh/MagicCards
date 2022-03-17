@@ -34,7 +34,7 @@ router.post('/new', upload.single('card_url'), async (req, res) => {
       await Card.create({
         card_name,
         card_price: +card_price,
-        id_condition,
+        id_condition: +id_condition,
         card_url: `/images/${fileName}`,
         id_user: id,
       });

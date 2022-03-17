@@ -13,6 +13,7 @@ const loginRouterApi = require('./routes/api/login.route');
 const cardsRouteApi = require('./routes/api/cards.route');
 const cardsRouteView = require('./routes/views/cards.route');
 const logoutRouteApi = require('./routes/api/logout.route');
+const profileRouteView = require('./routes/views/profile.route');
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
@@ -36,6 +37,7 @@ app.use('/registration', registerRouterApi);
 app.use('/login', loginRouterView);
 app.use('/login', loginRouterApi);
 app.use('/logout', logoutRouteApi);
+app.use('/profile', profileRouteView);
 
 // Если HTTP-запрос дошёл до этой строчки, значит ни один из ранее встречаемых рутов не ответил на запрос.Это значит, что искомого раздела просто нет на сайте. Для таких ситуаций используется код ошибки 404. Создаём небольшое middleware, которое генерирует соответствующую ошибку.
 app.use((req, res, next) => {
