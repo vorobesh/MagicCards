@@ -24,7 +24,7 @@ router.route('/')
         const isPassValide = await bcrypt.compare(user_password, user.user_password);
 
         if (isPassValide) {
-          // create session
+          req.session.user = user;
           res.status(200).json({
             message: 'Вы вошли в свой аккаунт',
           });

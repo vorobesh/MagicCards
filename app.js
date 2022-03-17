@@ -2,8 +2,6 @@
 const express = require('express');
 const createError = require('http-errors');
 // const path = require('path');
-const cardRoute = require('./routes/api/card.route');
-
 const config = require('./config/config');
 
 // Импортируем созданный в отдельный файлах роутеры.
@@ -11,47 +9,33 @@ const registerRouterView = require('./routes/views/register.route');
 const registerRouterApi = require('./routes/api/register.route');
 const loginRouterView = require('./routes/views/login.route');
 const loginRouterApi = require('./routes/api/login.route');
+const cardsRouteApi = require('./routes/api/cards.route');
+const cardsRouteView = require('./routes/views/cards.route');
+const logoutRouteApi = require('./routes/api/logout.route');
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
 config(app);
-//home
+
+// home
 app.get('/', (req, res) => {
-  res.render('home')
+  res.redirect('/cards');
 });
-
-//registration
-app.get('/reg', (req, res) => {
-  res.render('reg')
-});
-
-//login
-app.get('/login', (req, res) => {
-  res.render('home')
-});
-//logout
-app.get('/logout', (req, res) => {
-  res.render('home')
-});
-//cabinet
-app.get('/profile', (req, res) => {
-  res.render('home')
-});
-
 app.use((req, res, next) => {
-  // console.log(req.session);
   if (req.session.user) {
     res.locals.user = req.session.user;
   }
   next();
 });
 
-app.use('/', cardRoute);
+app.use('/cards', cardsRouteView);
+app.use('/cards', cardsRouteApi);
 app.use('/registration', registerRouterView);
 app.use('/registration', registerRouterApi);
 app.use('/login', loginRouterView);
 app.use('/login', loginRouterApi);
+app.use('/logout', logoutRouteApi);
 
 // Если HTTP-запрос дошёл до этой строчки, значит ни один из ранее встречаемых рутов не ответил на запрос.Это значит, что искомого раздела просто нет на сайте. Для таких ситуаций используется код ошибки 404. Создаём небольшое middleware, которое генерирует соответствующую ошибку.
 app.use((req, res, next) => {
