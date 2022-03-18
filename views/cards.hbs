@@ -13,7 +13,9 @@
                 <button type="button" data-toggle="modal" data-id="{{this.id}}" data-target="#exampleModal" data-whatever="@mdo" class="btn btn-dark btn-edit">Редактировать</button>
                 <a href="/cards/{{this.id}}/delete" data-id="{{this.id}}" class="btn btn-dark btn-delete">Удалить</a>
             {{else}}
-                <a href="#" data-id="{{this.id}}" class="btn btn-dark btn-delete">Купить</a>
+                {{!-- <a href="#" data-id="{{this.id}}" class="btn btn-dark btn-buy">Добавить в корзину</a> --}}
+              <button type="button" data-toggle="modal" data-id="{{this.id}}" data-target="#cart" data-whatever="@mdo" class="btn btn-dark btn-buy">Добавить в корзину</button>
+
             {{/ifCond}}
         </div>
     </div>
@@ -63,4 +65,24 @@
     </div>
 </div>
 
+<div class="modal" tabindex="-1" id="cart" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Корзина</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Товар добавлен в корзину</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script defer src="/js/cards.js"></script>
+<script defer src="/js/basket.js"></script>
