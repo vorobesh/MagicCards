@@ -13,4 +13,24 @@ router.get('/new', (req, res) => {
   res.render('cardNew');
 });
 
+router.get('/:id/edit', async (req, res) => {
+  const card = await Card.findOne({ where: { id: req.params.id }, raw: true, include: Condition });
+  res.json(card);
+});
+
+router.put('/:id/edit', async (req, res) => {
+  try {
+    const { card_name, card_price, id_condition } = req.body;
+    console.log(card_name, card_price, id_condition);
+    const card = await Card.findOne({ where: { id: req.params.id } });
+    card.card_name = card_name;
+    card.card_price = card_price;
+    card.id_condition = id_condition;
+    await card.save();
+    res.json({ res: 1 });
+  } catch (error) {
+    res.render('error', { error });
+  }
+});
+
 module.exports = router;
