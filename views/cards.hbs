@@ -12,7 +12,7 @@
             {{#ifCond this.id_user user.id}}
                 <a href="#" data-id="{{this.id}}" class="btn btn-dark btn-edit">Редактировать</a>
             {{else}}
-                <a href="#" data-id="{{this.id}}" class="btn btn-dark btn-delete">Купить</a>
+                <a href="#" data-id="{{this.id}}" class="btn btn-dark btn-buy">Добавить в корзину</a>
             {{/ifCond}}
         </div>
     </div>
@@ -21,3 +21,4 @@
 
 </div>
 <script defer src="/js/cards.js"></script>
+<script defer src="/js/basket.js"></script>

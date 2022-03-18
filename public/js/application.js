@@ -5,6 +5,7 @@ const formLogin = document.querySelector('#formLogin');
 const errorMessageLogin = document.querySelector('#errorMessageLogin');
 const formCardNew = document.querySelector('#formCardNew');
 const errorMessageCardNew = document.querySelector('#errorMessageCardNew');
+const basket = document.querySelector('#basket');
 
 if (formRegistration) {
   formRegistration.addEventListener('submit', async (event) => {
@@ -84,3 +85,14 @@ if (formCardNew) {
     }
   });
 }
+
+basket.addEventListener('click', async (event) => {
+  event.preventDefault();
+  const ids = JSON.parse(localStorage.getItem('basket'));
+  const action = `/basket?ids=${ids.toString()}`;
+
+  let response = await fetch(action);
+  response = await response.text();
+  const wrapper = document.querySelector('.wrapper');
+  wrapper.innerHTML = response;
+});
