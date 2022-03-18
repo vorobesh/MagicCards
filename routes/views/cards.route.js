@@ -18,6 +18,16 @@ router.get('/:id/edit', async (req, res) => {
   res.json(card);
 });
 
+router.get('/:id/delete', async (req, res) => {
+  try {
+    const card = await Card.findByPk(req.params.id);
+    await card.destroy();
+    res.json({ status: 'DELETED' });
+  } catch (error) {
+    res.render('error', { error });
+  }
+});
+
 router.put('/:id/edit', async (req, res) => {
   try {
     const { card_name, card_price, id_condition } = req.body;
@@ -27,7 +37,7 @@ router.put('/:id/edit', async (req, res) => {
     card.card_price = card_price;
     card.id_condition = id_condition;
     await card.save();
-    res.json({ res: 1 });
+    res.json({ result: 1 });
   } catch (error) {
     res.render('error', { error });
   }
