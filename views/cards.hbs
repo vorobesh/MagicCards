@@ -11,6 +11,7 @@
 
             {{#ifCond this.id_user user.id}}
                 <button type="button" data-toggle="modal" data-id="{{this.id}}" data-target="#exampleModal" data-whatever="@mdo" class="btn btn-dark btn-edit">Редактировать</button>
+                <a href="/cards/{{this.id}}/delete" data-id="{{this.id}}" class="btn btn-dark btn-delete">Удалить</a>
             {{else}}
                 <a href="#" data-id="{{this.id}}" class="btn btn-dark btn-delete">Купить</a>
             {{/ifCond}}

@@ -3,7 +3,7 @@
     <h3>Имя пользователя: <span class="badge badge-secondary">{{userInfo.user_name}}</span></h3>
     <h3>E-mail: <span class="badge badge-secondary">{{userInfo.user_email}}</span></h3>
     <h3>Город: <span class="badge badge-secondary">{{userInfo.city}}</span></h3>
-    <h3>Дата регистрации: <span class="badge badge-secondary">{{5}}</span></h3>
+    <h3>Дата регистрации: <span class="badge badge-secondary">{{userInfo.createdAt}}</span></h3>
     <br>
     <h2 class="text-center"><span class="badge badge-secondary">Мои карточки:</span></h2><br>
 </div>
@@ -17,7 +17,7 @@
                 <p class="card-text">Цена: {{this.card_price}}</p>
                 <p class="card-text">Состояние: {{this.condition}}</p>
                 <button type="button" data-toggle="modal" data-id="{{this.id}}" data-target="#exampleModal" data-whatever="@mdo" class="btn btn-dark btn-edit">Редактировать</button>
-                    <a href="#" class="btn btn-dark">Удалить</a>
+                    <a href="/cards/{{this.id}}/delete" data-id="{{this.id}}" class="btn btn-dark btn-delete">Удалить</a>
             </div>
         </div>
 

@@ -1,5 +1,6 @@
 const container = document.querySelector('#cards');
 const editForm = document.querySelector('#editForm');
+const submitBtn = document.querySelector('#submitBtn');
 
 container.addEventListener('click', async (event) => {
   event.preventDefault();
@@ -8,12 +9,16 @@ container.addEventListener('click', async (event) => {
     let response = await fetch(`/cards/${event.target.dataset.id}/edit`);
     response = await response.json();
     console.log(response);
-    const submitBtn = document.querySelector('#submitBtn');
     submitBtn.dataset.id = event.target.dataset.id;
     editForm.card_name.value = response.card_name;
     editForm.card_price.value = response.card_price;
     editForm.id_condition.value = response.id_condition;
     // console.log(response, editForm);
+  }
+  if (event.target.classList.contains('btn-delete')) {
+    let response = await fetch(`/cards/${event.target.dataset.id}/delete`);
+    response = await response.json();
+    if (response.status) window.location.href = '/cards';
   }
 });
 
@@ -35,4 +40,5 @@ submitBtn.addEventListener('click', async (event) => {
     }),
   });
   response = await response.json();
+  if (response.result) window.location.href = '/profile';
 });
