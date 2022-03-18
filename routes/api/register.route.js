@@ -26,13 +26,15 @@ router.route('/')
 
       if (!user) {
         const hashPassword = await bcrypt.hash(user_password, saltRounds);
-        // req.session?
-        await User.create({
+
+        const userCreated = await User.create({
           user_name,
           user_email,
           user_password: hashPassword,
           id_city,
         });
+
+        req.session.user = userCreated;
         res.status(200).json({
           message: 'Пользователь успешно зарегистрирован',
         });

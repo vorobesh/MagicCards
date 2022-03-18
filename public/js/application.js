@@ -29,6 +29,7 @@ if (formRegistration) {
     });
 
     const responseJson = await response.json();
+    setTimeout(() => { window.location.href = '/cards'; }, 1000);
     errorMessageRegistration.innerHTML = responseJson.message;
   });
 }

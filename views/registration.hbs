@@ -14,8 +14,15 @@
   </div>
 
   <div class="col-md-6 mt-4">
-    <label for="inputCity" class="form-label">Ваш город:</label>
-    <input type="text" name="id_city" class="form-control" id="inputCity" required>
+    {{!-- <label for="inputCity" class="form-label">Ваш город:</label>
+    <input type="text" name="id_city" class="form-control" id="inputCity" required> --}}
+
+     <select required name="id_city" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+      <option value="" disabled selected>Укажите ваш город</option>
+      {{#each cities}}
+      <option value={{id}}> {{city_name}}</option>
+      {{/each}}
+     </select>
   </div>
 
   <div class="col-12 mt-4 d-flex mb-4 align-items-center">
