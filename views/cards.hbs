@@ -10,7 +10,8 @@
             <p class="card-text">Состояние: {{this.condition}}</p>
 
             {{#ifCond this.id_user user.id}}
-                <a href="#" data-id="{{this.id}}" class="btn btn-dark btn-edit">Редактировать</a>
+                <button type="button" data-toggle="modal" data-id="{{this.id}}" data-target="#exampleModal" data-whatever="@mdo" class="btn btn-dark btn-edit">Редактировать</button>
+                <a href="/cards/{{this.id}}/delete" data-id="{{this.id}}" class="btn btn-dark btn-delete">Удалить</a>
             {{else}}
                 <a href="#" data-id="{{this.id}}" class="btn btn-dark btn-buy">Добавить в корзину</a>
             {{/ifCond}}
@@ -20,5 +21,47 @@
         {{/each}}
 
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Редактирование карточки:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+
+                    <div class="form-group">
+                        <label for="card_name" class="col-form-label">Название:</label>
+                        <input type="text" class="form-control" name="card_name" id = "card_name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="card_price" class="col-form-label">Цена:</label>
+                        <input type="number" class="form-control" name="card_price" id="card_price">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_condition">Состояние:</label>
+                        <select class="form-control" id="id_condition" name="id_condition">
+                            <option value="1">Отличное</option>
+                            <option value="2">Среднее</option>
+                            <option value="3">Плохое</option>
+                        </select>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                <button type="submit" id="submitBtn" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script defer src="/js/cards.js"></script>
 <script defer src="/js/basket.js"></script>
