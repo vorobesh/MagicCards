@@ -90,10 +90,20 @@ if (formCardNew) {
 basket.addEventListener('click', async (event) => {
   event.preventDefault();
   const ids = JSON.parse(localStorage.getItem('basket'));
+  if (!ids) {
+    const wrapper = document.querySelector('.wrapper');
+    wrapper.innerHTML = '<div class="pt-5 container text-center text-white"><h2>Корзина пуста</h2></div>';
+  }
   const action = `/basket?ids=${ids.toString()}`;
 
   let response = await fetch(action);
   response = await response.text();
   const wrapper = document.querySelector('.wrapper');
   wrapper.innerHTML = response;
+  wrapper.querySelector(' #clearBasket').addEventListener('click', () => {
+    localStorage.clear();
+    console.log(' click');
+    window.location.href = 'http://localhost:3000/cards';
+  });
+  console.log(wrapper);
 });

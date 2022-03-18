@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const {
-  Card, Condition, User, City,
+  Card, Condition, User, City, 
 } = require('../../db/models');
 
 router.get('/', async (req, res) => {

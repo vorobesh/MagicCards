@@ -10,7 +10,6 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="d-flex navbar-nav ml-auto">
-              <a class="navbar-brand" id="basket" href="/basket">Basket</a>
                {{#if user}}
                 <li class="nav-item mr-3 d-flex flex-column justify-content-center">
                   <a class="border rounded nav-link text-white font-weight-bold" style="line-height:0.5" href="/profile">{{user.user_name}}</a>
@@ -18,7 +17,11 @@
                 {{/if}}
                 <li class="nav-item">
                     <a class="nav-link" href="/cards">Карточки</a>
+                </li> 
+                <li class="nav-item">
+                     <a id="basket"class="nav-link" href="/basket">Корзина</a>
                 </li>
+
                 {{#if user}}
                     <li class="nav-item">
                         <a class="nav-link" href="/cards/new">Выставить карточку на продажу</a>
