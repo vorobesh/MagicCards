@@ -1,15 +1,42 @@
 /* eslint-disable max-len */
 const express = require('express');
 const createError = require('http-errors');
-// const path = require('path');
-
-// Импортируем созданный в отдельный файлах рутеры.
 const config = require('./config/config');
+
+// Импортируем созданный в отдельный файлах роутеры.
+const mainRouterView = require('./routes/views/main.route');
+const registerRouterView = require('./routes/views/register.route');
+const registerRouterApi = require('./routes/api/register.route');
+const loginRouterView = require('./routes/views/login.route');
+const loginRouterApi = require('./routes/api/login.route');
+const cardsRouteApi = require('./routes/api/cards.route');
+const cardsRouteView = require('./routes/views/cards.route');
+const logoutRouteApi = require('./routes/api/logout.route');
+const profileRouteView = require('./routes/views/profile.route');
+const basketRouteView = require('./routes/views/basket.route');
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
 config(app);
+
+app.use((req, res, next) => {
+  if (req.session.user) {
+    res.locals.user = req.session.user;
+  }
+  next();
+});
+
+app.use('/', mainRouterView);
+app.use('/cards', cardsRouteView);
+app.use('/cards', cardsRouteApi);
+app.use('/registration', registerRouterView);
+app.use('/registration', registerRouterApi);
+app.use('/login', loginRouterView);
+app.use('/login', loginRouterApi);
+app.use('/logout', logoutRouteApi);
+app.use('/profile', profileRouteView);
+app.use('/basket', basketRouteView);
 
 // Если HTTP-запрос дошёл до этой строчки, значит ни один из ранее встречаемых рутов не ответил на запрос.Это значит, что искомого раздела просто нет на сайте. Для таких ситуаций используется код ошибки 404. Создаём небольшое middleware, которое генерирует соответствующую ошибку.
 app.use((req, res, next) => {
@@ -23,7 +50,6 @@ app.use((err, req, res, next) => {
   const appMode = req.app.get('env');
   // Создаём объект, в котором будет храниться ошибка.
   let error;
-
   // Если мы находимся в режиме разработки, то отправим в ответе настоящую ошибку. В противно случае отправим пустой объект.
   if (appMode === 'development') {
     error = err;

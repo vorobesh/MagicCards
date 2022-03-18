@@ -1,0 +1,33 @@
+<div style="width: 500px" class="container py-3 text-white">
+
+  <form enctype="multipart/form-data" id="formCardNew" method="post" action="/cards/new">
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Имя вашей карточки:</label>
+      <input autocomplete="off" required name="card_name" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Цена:</label>
+      <input autocomplete="off" required name="card_price" type="number" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Изображение для загрузки:</label>
+      <input autocomplete="off" required name="card_url" type="file" class="form-control">
+    </div>
+
+    <select required name="id_condition" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+      <option value="" disabled selected>Укажите состояние вашей карточки</option>
+      <option value="1">Отличное</option>
+      <option value="2">Среднее</option>
+      <option value="3">Плохое</option>
+    </select>
+
+    <div class="container" id="errorMessageCardNew"></div>
+
+    <button type="submit" class="btn btn-dark mt-3">Создать карточку</button>
+
+  </form>
+
+</div>
