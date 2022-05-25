@@ -12,4 +12,5 @@
 * npm ci
 * npx sequelize db:create
 * npx sequelize db:migrate
+* npx sequelize db:seed
 * npm run dev
